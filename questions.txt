@@ -1,0 +1,27 @@
+# DevOps and The Cloud
+
+Do some research to answer the following questions in your own words as best as you can.
+
+1. What is DevOps?
+
+The bridge between people who want to write code, and people who want the code to consistently work for the end users. Typically working in Agile practices, having the bridge between these two camps can speed up releases, gives more confidence that bugs won't release to production and the way they ensure this is by maintaining identical, reusable dev, testing, staging and prod environments.
+
+2. What are the 3 ways of DevOps and what do they mean in your own words?
+
+Flow
+Being able to confidently deploy changes to your application, without spending too much time testing before hitting prod. This is done using CI/CD automated pipelines, that *should* go through automated tests throughout different environments. Having robust deployment scripts to ensure all pre-requisite config, tests, plugins etc are run/added correctly helps this be smooth.
+
+Feedback
+Using tools such as the telemetry offered by AWS/Azure/GCP to monitor behaviour of your application, track failures using things like dead letter queues, logs and even just the status pages of your pipelines. All these bits of information can assist you finding core errors in your application, allowing the team to learn how to improve our practices going forward, and how to avoid situations where these bugs occur. 
+
+Continual Learning
+Embrace the good bits, when you learn some new technology or a new addition to your cloud provider is released, it may be something useful for your platform. Likewise, when new methods of doing things are found, taking time to investigate and implement these things (provided they work in your situation) can be a great way to not only motivate people to learn, but also for your engineering team to thrive and create cutting edge applications. We must also embrace failures, when they occur. Learn from these mistakes, discuss them as a team and dissect the problem, time spent learning how to not fail again is valuable. 
+
+3. What do you think a DevOps Engineer does as part of a team?
+
+Helps create infrastructure, maintain and monitor that infra, help the product focussed devs have a good, robust pipeline that lets them deploy thick and fast with support if anything goes wrong. 
+
+4. What do you think the most important qualities of a DevOps or Cloud engineer are?
+
+Soft skills: Communication and collaboration as you'll be working cross teams, a mix of focus on product and scalability of said product. 
+Hard(?) skills: Unix/linux based systems, knowledge of CI/CD and good analytical skills, you need to be able to query large datasets to find relevant information so you can debug any failures (And even outside of failure, to improve and performance issues you might find)
