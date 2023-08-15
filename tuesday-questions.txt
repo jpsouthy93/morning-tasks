@@ -1,0 +1,19 @@
+# Cloud Concepts and VPC
+​
+1. What are the difference between a server and your computer?
+
+- Hardware: Servers typically run different hardware than a personal computer, different processor architectures, different RAM (ECC), more resilient harddrives and they're built for long lived up times. 
+Software: More often than not run a unix operating system, sometimes Windows. These OS's are generally more efficient and secure than typical operating systems consumers use, and are built to handle multiple requests from different end users, rather than a more typical single user-computer relationship 
+​
+2. How can you tell whether an IP address is public or private?
+
+- Private IP addresses tend to have reserved IP ranges, typically starting with 10, 172 or 192 (Think 192.168.x.x for home network devices). These IPs are only available to hit from inside a network, for instance local file transfers, or streaming video from a home computer to a smart tv. These addresses are assigned by your router.
+Public IPs you can put in your browser and see what the host serves, you can also potentially check this on whois for information regarding who owns that IP address or domain. These addresses are assigned by your internet provider.
+​
+3. Explain in your own words the difference between Cloud, Hybrid, and On-Premises deployment models.
+
+- A Cloud model is hosting all your infrastructure and Cloud in a data centre, likely spread across multiple availability zones and regions. This lets you scale easily, gives you disaster prevention and fallback capabilities and takes the need for a server room, data centre or any other hardware responsibilities away.
+
+- Hybrid takes the approach of hosting some of their infrastructure and code in the Cloud, but keeping some hosted locally on physical devices. This may be due to old legacy platforms or integrations that wouldn't be easy to migrate to new infrastructure, it could be for security reasons or it could be simply you want to utilise a specific capability of the cloud providers, whether it is authentication, storage or processing power in isolation, and handle the rest of your stack on prem
+
+- On-premises is solely using physical devices in your physical locations, this will require staff to maintain these servers, routinely update the software, check for security patches and when a business grows, manually add new servers, processing power, memory or storage to meet the businesses needs, as opposed to auto-scaling cloud infra
