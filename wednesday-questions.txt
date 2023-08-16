@@ -1,0 +1,25 @@
+# Cloud Services
+​
+Decide whether the following AWS services are Infrastructure as a service (IaaS), Platform as a service (PaaS), Software as a service (SaaS), or Serverless and give your reasoning.
+​
+EC2
+EC2 is an IaaS, it's a basic server with a operating system image on it for you to do whatever you want, such as install new applications, host a server, a database, an image store or any other standard server functions.
+​
+S3
+S3 is a PaaS, it provides you a storage platform to host data, images or anything else you want in an object store. It is useful databases, but should be used for non-relational databases as it's a key-value/object store. 
+​
+RDS
+RDS is also a PaaS, it provides a different kind of storage platform designed to host relation databases such as SQL. It automatically provides you scaling, auto updates for both the OS and database software, ensures backups and hardware maintenance are also performed by Amazon.​
+
+Lambda
+Lambda is serverless computing, this gives you a service that can run individual functions on demand, there's no requirement to scale this up or down, nor maintain it in any way. You host a function within it, such as a bulk e-commerce order processor, and when your logistics firm need to get all of the order details they can make a request to us, and the Lambda can serve this specific request, before shutting down again for the day, only waking on the next request for delivery information.
+​
+EKS
+EKS is IaaS, it's a managed kubernetes service, they provide all of the infrastructure, scaling, networking etc but you are in control of the operating system and what gets deployed on these clusters, you could host databases, webservers, APIs on these, with any relevant data and middleware you'd need.
+Side note: I have read this is 'CaaS' as well - 'Container as a Service'
+​
+DynamoDB
+DynamoDB seems to be between serverless and PaaS - it's a managed database service so maintenance (hardware or software) is required, it allows for replication, it scales automatically and is widely distributed across multiple servers. It uses a pay what you use method, akin to serverless, but also provides you an actual managed platform to host your data in, on their database software. 
+​
+ECR
+ECR is PaaS, it provides you a platform that you can use to store and manage containers without worrying about the actual infrastructure. You don't need to worry about setting this up, scaling at any point or managing your own containers in a custom manner.
