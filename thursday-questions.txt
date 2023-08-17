@@ -1,0 +1,17 @@
+# NAT, routes, Internet Gateway
+​
+Answer the following questions
+​
+1. What do you think the purpose of an internet gateway is? What would we not be able to do without one?
+An internet gateway is a component of our VPC which will allow a VPC to reach out of it's internal network and interface with the wider internet. Without this, no external traffic could enter. 
+​
+2. Thinking back to a previous session, where do you think you might be using a NAT gateway right now?
+A NAT gateway would be used also within our VPC, at a subnet level. The NAT gateway would allow a private subnet access to the wider internet, but only for outbound, no unsolicited inbound traffic will be allowed through. It would also allow a private subnet to interface with other instances in our VPC.
+​
+3. What IP addresses will be matched by the CIDR block of `0.0.0.0/0`?
+   - for bonus points, explain why?
+Any IPv4 address will be matched by this CIDR range, because the /0 is the total number of bits of data that must match in the IP starting from right to left, so there's no requirement for any digit within the 32 bit IP Address to match. 
+​
+4. In your own words, what is the difference between a NAT gateway and an Internet Gateway? When would you want one over the other?
+An Internet gateway will allow traffic from our VPC or subnet to reach the WWW, both inbound and outbound. 
+A NAT gateway till allow traffic from our VPC or subnet to reach the WWW, but only outbound traffic so any inbound requests won't be accepted. The NAT gateway seems to be more useful for internal communications on your VPC across different AZs and subnets. 
