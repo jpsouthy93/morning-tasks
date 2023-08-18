@@ -1,0 +1,20 @@
+# Designing for failure
+​
+Identify the kinds of failure readiness described below, giving your reasoning;
+​
+- A system that switches to a new server when one fails
+Server failover/backup server. This is useful in the instance that an AZ or single server instance goes down, a backup server could quickly spin up (automatically) with an identical setup to the original, and the ability to communicate with all your other healthy infrastructure.
+​
+- Adding replica databases with a master database
+Backup databases protect from failure by hosting a copy of your master database on a different server/database. If any corruption or data loss occurs on your master DB, you are able to retrieve an up to date copy of the information you store, and then start using that as your production DB while fixing so business can continue. It may be that you need to scale the power of the replicas to support this, or you create a new database, replicate your data from backups and use that as a master DB instead.
+Caveat to this, you'll only get up to date copies as of your last backup, if you are only doing this infrequently, you may lose a chunk of your data. 
+​
+- Having a 2-3 colleagues who have access to the master password
+Known as SPOF, single point of failure (or as I like, 'The bus factor') is a condition where only a single person, or thing, can access our keys/secrets or general server/DB platform. This is bad, as if anything was to happen to this person, what is the fallback for business continuity? You need to be able to access your platform even if the bus... is late for your SPOF
+​
+- Performing health checks on a server
+Proactively performing health checks can identify any potential issues quicker than just letting them happen, you may notice your CPU temps seem to be peaking, or your harddrives are under too much concurrent load and struggling to keep up. At this stage this is relatively easy to fix, add more cooling, CPU power or disks. This may also give us nice metrics that we can use in future, to estimate what future hardware we may need based on the last x times trends.
+-- Something else I thought of here, is automated health checks by AWS. James discussed the reason for having an odd number of availability zones, and one of the reasons being so they can get quorum and determine if a single instance or building is failing, so as much as this isn't a health check performed by us, it's still an important health check to track the status of our infra.
+​
+- Spreading out user requests over multiple machines rather than just one powerful one
+Load balancing is the mechanism of sending requests across distributed servers, this ensures that the 'load' is relatively even across the server so no one instance is getting slowed down or overused. These can be both hardware or software based, or a mix of both.
