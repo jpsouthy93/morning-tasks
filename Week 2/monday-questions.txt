@@ -1,0 +1,31 @@
+# Load Balancing
+
+​
+Can you decide what type of load balancing from the notes might work best for the following situations;
+​
+
+## A chat service where users maintain active connections for a while
+
+### I think a sticky session would work well in this instance, once users are connected in a chat there is likely no reason to load balance them to different servers. There wouldn't be enough bandwidth being used for a messenger that it could reasonably become overbearing for a server for a single user (or single chat session)
+
+## An AI image generation API with paid tiers
+
+### A weighted round robin approach may be handy here, as larger image generation requests can be sent to servers that are able to handle more significant loads. If all the image generation servers are identical, it may be better to use the least connection approach as the weighted round robin couldn't send it to a more powerful instance, whereas sending it to the least used server could be beneficial in the moment.
+
+​
+
+## A social media website that has users all over the world
+
+### Source request information is the approach to take here, this ensures that all the regulations for the locale the user is based in can be easily met, it can serve them relevant localised information such as weather, news or adverts and will generally have lower latency than a server located further away.
+
+​
+
+## An authorisation service that takes the same amount of time for each request
+
+### A round robin approach is the way to go here, if all requests take the same amount of time to handle we can send them all to the 'next' server in the chain, until we loop around to the first server again. No sever would get an excessive load using this method, so we can be sure no user will be left waiting for authentication
+
+​
+
+## A gaming server that requires low latency
+
+### Least response time would be the best there, this will ensure each user gets the fastest latency to the server and means their gameplay would be more responsive or accurate. If possible, you could use multiple rules for this such as the least response time in conjuction with source request information to direct UK players to the most localised servers to them, AND the least connection within that region to make sure you've got a localised server, with the lowest response times and least amount of other traffic.
