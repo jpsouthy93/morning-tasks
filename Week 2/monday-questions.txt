@@ -6,7 +6,7 @@ Can you decide what type of load balancing from the notes might work best for th
 
 ## A chat service where users maintain active connections for a while
 
-### I think a sticky session would work well in this instance, once users are connected in a chat there is likely no reason to load balance them to different servers. There wouldn't be enough bandwidth being used for a messenger that it could reasonably become overbearing for a server for a single user (or single chat session)
+### I think the least connection approach, in tandem with a sticky session would work well in this instance, once users are connected in a chat there is likely no reason to load balance them to different servers. There wouldn't be enough bandwidth being used for a messenger that it could reasonably become overbearing for a server for a single user (or single chat session)
 
 ## An AI image generation API with paid tiers
 
