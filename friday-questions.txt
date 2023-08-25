@@ -1,0 +1,16 @@
+# Terraform Enterprise Approaches
+​
+1. What is remote state in Terraform and why is it important for collaborative projects?
+Remote state is the description of the current architecture you have, held remotely. This means that anyone you collab with can be sure that you're both in sync with the architecture you're setting up.
+​
+2. What are some advantages to remote state besides being able to work collaboratively?
+You are able to version control your state using a remote state, and also it's encryptable ensuring that your state is protected, meaning your IP Ranges, CIDR ranges, subnet details etc are all protected from attacks. The state is also backed up, so if anything happens to your personal machine, it's not a SPOF.
+​
+3. What are some options for remote backends and how do they differ?
+Azure blob storage can hold your state, as can S3 with DynamoDB. Google also have an offering called Google Cloud Storage, but you could even just use git! 
+​
+4. Why is it important to not hardcode secrets, like API keys and passwords, directly into your Terraform config?
+Hardcoding secrets leaves them exposed if anyone can breach your repository or intercept unencrypted traffic from your machine. Hardcoding secrets also makes it more difficult to rotate them where required, if a secret did leak and you'd set this in a config file, you can change one value and continue working, but if it was dispersed throughout multiple files you'd need to find each reference and manually update it
+​
+5. Provide an example of where using multiple Terraform workspaces would be beneficial
+This is useful for managing multiple environments, such as dev, staging, uat and production. Any changes made to these environments are localised and won't affect other workspaces, this allows you to test anything you want in a dev env, without stopping your QAs working away.
