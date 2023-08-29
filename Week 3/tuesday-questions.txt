@@ -1,0 +1,17 @@
+1. Imagine you need to make changes to the configuration of an existing AWS EC2 instance that's being managed by Terraform. How might you go about making those changes while minimizing disruption to your production environment?
+You could either horizontally scale the infrastructure, or spin up a new instance and once it's healthy and responsive, turn your load balancer to point to that 
+​
+2. In your own words, what is a module in Terraform?
+A (sometimes) pre-written block of IaC that will allow us to separate the concerns of our IaC. It's (in my head) similar to the MVC or OOP where we split things into small, isolated chunks of specific code
+​
+3. What are some advantages of using modules in your Terraform code?
+It's much easier to break down the infrastructure into small sections, as if something goes wrong there is less of a monolithic file to look through, and more specific folders/files being used (It also helps that we can use variables here as well, as it's easier to update a variable once, than it is go through and search for each instance of said value)
+​
+4. What are some instances that you might use an output block?
+When you want access to something that hasn't currently been created, kind of like a return block, if you want to create some new infra, you'll need to know the IDs and ARNs, IPs, general config of your newly made infra and as it's all being done as a single job, you don't know these details until that part of the job is done, so by outputting, you can then access this later on
+​
+5. How can you pass arguments to a module? What steps do you need to take to add an argument?
+You need to first declare the variable (assuming this is what the question means). You can do this in the child module variables.tf, then in your main.tf for the specific module (for instance /ec2/main.tf) you need to refer to the variable wherever you want to use it, using the var.notation (where 'notation' is the name you initally gave the variable)
+​
+6. Imagine you're creating a Terraform module to deploy an AWS VPC. What are some variables you might define for this module to make it adaptable for different environments?
+Variables I might set in this instance are the AZs we're using, so we can easily expand them, CIDR ranges, for the same reason, instance sizes could also be useful if you wanted identical infra across the board when scaling.
