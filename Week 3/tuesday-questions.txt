@@ -1,6 +1,6 @@
 1. Imagine you need to make changes to the configuration of an existing AWS EC2 instance that's being managed by Terraform. How might you go about making those changes while minimizing disruption to your production environment?
-You could either horizontally scale the infrastructure, or spin up a new instance and once it's healthy and responsive, turn your load balancer to point to that 
-​
+You could either horizontally scale the infrastructure, or spin up a new instance and once it's healthy and responsive, turn your load balancer to point to that ​
+
 2. In your own words, what is a module in Terraform?
 A (sometimes) pre-written block of IaC that will allow us to separate the concerns of our IaC. It's (in my head) similar to the MVC or OOP where we split things into small, isolated chunks of specific code
 ​

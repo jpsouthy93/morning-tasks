@@ -1,0 +1,51 @@
+# Docker
+​
+1. What is containerization, and how does it differ from virtualization?
+Containerization is tool used to create ready to deploy applications with all dependencies required, any libraries, binaries and config they require. 
+
+This is great because it enables anyone to be able to run the containerized application without needing to know any pre-requisites to install. Containers are typically fast, as they share the Operating System of the host machine using only what resources they need, compared to virtualization which is a full fledged OS and has significant overheads on it's own. 
+
+Virtualization doesn't keep it as lightweight as a container, as previously mentioned it's a full blown OS that requires it's own dedicated hardware (or virtual hardware) and it keeps those resources to itself, effectively taking them away from the host machine. 
+
+2. Why is containerization important in modern software development and deployment?
+Containers are really useful for modern development practices as they are easily scalable, allowing the container access to more virtual resources will allow the container to be more performant. They're also very useful on microservice architecture platforms, as each individual microservice can be containerized which means multiple can run on a single EC2 instance simultaneously. Because containers are portable as well, if you need to migrate your architecture to a different cloud provider, or even on prem, this is easily doable. 
+​
+3. What is the difference between an image and a container in Docker?
+The image can be thought of in a similar way to an AMI, or Launch Template. It outlines the specification of what the docker container should be, handling the required libraries, settings and any code you want your application to run (But it isn't running! It's just a static image). 
+
+When this image is loaded in docker, it becomes a container - it has access to all of the pre-requisites we determined in the image and is actively being 'run' or hosted.
+​
+4. Can you give an example of a situation where you might choose to use Docker containers in a software development project?
+If you have dependencies for a certain package, library or general software you could end up getting out of sync between developers if they update these packages to different versions without consistency. Docker allows the use of a 'Dockerfile' which you can kinda of think of similar to package.json/package-lock.json file - it determines the versions of required libraries and software. This is really great between development teams as you know everyones working from the same page, with the same versions and you shouldn't hear 'It works on my machine' when you've standardised these things, but also this works for production apps as well - it can ensure your production applications are all using the known working versions of any dependencies.
+​
+5.If you were tasked with explaining Docker to someone who has never heard of it before, how would you describe it in a few sentences?
+When you're making a cake you need some set ingredients, flour, sugar, eggs, milk and bananas (I love a banana loaf). Because we like to be quite specific about what we use in our cakes we avoid the supermarket and opt to go indie, so we need to go to the mill for our flour, the chicken farm for our eggs, the dairy farm for our milk and unfortunately, Brazil for the sugar, and Costa Rica for our bananas. These are the desired ingredients, and we know exactly where to get them but to do this manually it will take some time. 
+
+Introduce the packet mix, but thankfully one we've curated ourselves - it has all our finest ingredients, to the exact spec we want, with the correct measures and blend, and we can tweak it if required, any time we want. The moment we want a new cake, we get the packet mix and quickly whisk up a new cake, then we can immediately spin up another cake mix so we can have our cake and eat it to! 
+
+​
+## Extension
+​
+Fill in this cheat sheet throughout the day to help and remind you understand how to use Docker commands
+​
+| Command | Description |
+| :-----: | ----------- |
+|   ps    | This lists any running containers
+| images  | This shows the images that are available on your system
+|  pull   | Downloads an image from a Docker registry, kind of like git pull for a repo
+|  build  | This builds an image from a Dockerfile and a 'context'. The 'context' is the files that live within the directory specified.
+|   run   | Creates and starts a container from an image 
+|  stop   | Stops one or more containers from running
+​
+| Flag | Description  
+|:------:|---------------------------------------------------
+| -a | Shows all items similar to `ls -a` but slightly different context in Docker - for `docker ps -a` it would show all images, not just running ones
+| -d | This will run in 'detached' mode which means it runs in the background and prints the container ID 
+| -t | Seems to create a Pseudo-terminal (Which seems to just be a Terminal we can use in the docker image, and the pseudo terminal has been built to allow terminals to have limited access outside of the image due to virtualisation? (Completely making that up, but from what I'm reading that's roughly on track))
+| -p | This will publish the containers port to the host (Presumably allowing you to expose that for incoming traffic)
+​
+Below is an example of a how you might format a docker command. (In documentation having something wrapped in square brackets [] denotes that it is optional to provide this in the command)
+​
+```bash
+docker run [OPTIONS] <IMAGE[:TAG|@DIGEST]> [COMMAND] [ARG...]
+```
