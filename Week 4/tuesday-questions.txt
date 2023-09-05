@@ -1,0 +1,18 @@
+# Kubernetes
+​
+1. What is Kubernetes, and how would you explain it to someone who has never heard of it before?
+Kubernetes takes all our little bits of our application and makes sure they are in the right place, with the right connections between them. If a little bit breaks, Kubernetes monitors it and will replace that section with a new version of itself that is healthy. If you need more of specific little bits, it can create those to make your application faster as well.
+​
+2. Can you describe the basic components of a Kubernetes cluster (such as nodes and control plane) and their role?
+The control plain is like the brain of Kubernetes, it manages the entire underlying system. It includes an entry point (API Server) which is the only place Kubernetes will take commands, it also has a scheduler which creates containers depending on resource needs, bottlenecks etc and a controller manager that handles node controllers and replication controllers etc. 
+
+Nodes are like little worker bots, they contain a Kubelet which ensures the container is in a 'Pod', a kube-proxy which acts like an internal networking interface, so all your containers/pods can communicate between themselves and everything the container needs to perform its function such as runtimes, libraries, databases and other associated software.
+​
+3. How does Kubernetes ensure high availability and fault tolerance of applications within a cluster?
+By having multiple replicas of a pod Kubes ensures that if a pod fails, the application is still generally available. While still being generally available it might not be as performant, so Kubes will also use its self-healing tools to recreate a healthy instance of the failed pod. When this happens the IP address of the new pod will change, but Kubes manages this by using a networking service so you don't need to manually update any of the network config. If something does fail, Kubes can be resilient to any data loss by attaching a storage service to it.
+​
+4. What is a Kubernetes Service, and why is it important for networking and communication between Pods?
+This is the aforementioned internal networking tool, since pods can, and do, often die or become generally unhealthy we need to ensure any new pods can be spun up and communicated with, the Kubernetes Service handles this by providing a stable IP and DNS name for your pods. It will also load balance between your pods automatically.
+​
+5. What is a Pod in Kubernetes, and why is it a fundamental building block for containerized applications?
+A pod is the smallest unit in Kubernetes we'll manage, it hosts one or more containers on the same server/host machine. Containers within the pod all share the same networking interfaces, IP address and storage. Because all the containers within a pod share the same storage, this helps consistency across your applications and reduces external replication efforts. You're also able to manage a pod, rather than managing multiple containers so if you know exactly how your containers interact and what they need, they can all be stored within a single pod for the ease of deployments. 
