@@ -1,0 +1,18 @@
+# Kubernetes Networking
+​
+1. What is Kubernetes internal DNS, and why is it essential for containerized applications within a cluster?
+Kubernetes creates DNS records for services and pods, this allows us to connect to them using consistent DNS names rather than IP addresses that may change. It publishes the information about the pods and services, and the kubelet then configures the pods DNS so that running containers can lookup services by name. This is essential because the pods and services may become unhealthy or reboot over time, changing it's IP, so no intervention is needed when using the DNS record provided by Kubernetes.
+​
+2. Can you explain the concept of a Kubernetes ReplicaSet and why it's useful for maintaining a specified number of pod replicas?
+A ReplicaSets purpose is to maintain a stable number of pods at any given time, this allows us to be highly available. A ReplicaSet is defined with parameters which define how to identify the pods it can acquire, how many replicas it needs to maintain and a template, specifying the data it requires to create new pods to meet the number of running replicas
+​
+3. In your own words what is the difference between a ClusterIP, NodePort, and LoadBalancer service types?
+A ClusterIP is the default Kubes service type, when a Service is created with ClusterIP type it assigned a virtual IP address thats internal to the cluster, so that pods can communicate with the service. This is not accessible outside of the cluster.
+A NodePort allows us to open a certain port for each node in the cluster, any external request to these ports on any node is forwarded to the service, kind of like an IGW or external entry point
+A LoadBalancer is essentially the same as what we've made before manually, with AWS CLI and Terraform - except this generally builds on the NodePorts and balances traffic between them rather than traffic having to hit a specific port exposed by the NodePort we can do this automatically
+​
+4. If you have a front and backend, what service might be best to use to expose the backend to the frontend?
+If the cluster hosts both the front and backend, a ClusterIP would be ideal as it's only exposed internally to the cluster and provides a stable DNS record that the frontend can communicate with the backend with. If the frontend was elsewhere, a NodePort or Load Balancer would likely be more appropriate, as it would need to route traffic to the backend in a separate cluster and would require an IP that's exposed outside of then cluster itself.
+​
+5. What is service discovery in Kubernetes and what is it's purpose?
+Service discovery is a method where pods can automatically find and communicate with services without needing to know their exact name or IP address. Because can frequently be changed for a number of reasons, their IP address is subject to change to and we need to make sure our platform is resilient to this. As Kubernetes provides it's own DNS server, when a service is created it's automatically assigned a DNS name based on its service name and namespace, this remains consistent even if the IP address changes. This gives us extra resilience, but also it makes configuration easier as we can use dynamic disovery, rather than hard coding URLs and endpoints
